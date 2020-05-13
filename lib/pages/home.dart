@@ -8,75 +8,7 @@ class HomePage extends StatelessWidget {
     final height = 50.0;
 
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size(q.size.width, q.padding.top),
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xFF3867D5), Color(0xFF81C7F5)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-            ),
-            child: Stack(
-              children: <Widget>[
-                CustomPaint(
-                  child: Container(
-                    width: q.padding.top + height,
-                    height: q.padding.top + height,
-                  ),
-                  painter: CurvePainter(
-                    color: Color(0x27f1f1f1),
-                    offset: Offset(30, 0),
-                  ),
-                ),
-                CustomPaint(
-                  child: Container(
-                    width: q.size.width,
-                    height: q.padding.top - 3,
-                  ),
-                  painter: CurvePainter(
-                    color: Color(0x27ffffff),
-                    offset: Offset(q.size.width - 30, 30),
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                      top: q.padding.top, left: 8.0, right: 8.0),
-                  height: q.padding.top + height,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Hello Brenda!',
-                            style: TextStyle(
-                              fontSize: 17.0,
-                              color: Color(0xFFF1F1F1),
-                            ),
-                          ),
-                          Text(
-                            'Today you have no tasks',
-                            style: TextStyle(
-                              fontSize: 10.0,
-                              color: Color(0xFFF1F1F1),
-                            ),
-                          )
-                        ],
-                      ),
-                      IconButton(
-                        icon: Image.asset('assets/png/avatar.png'),
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+        appBar: buildAppBar(q, height),
         floatingActionButton: FloatingActionButton(
           child: Icon(
             Icons.add,
@@ -128,6 +60,81 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ));
+  }
+
+  PreferredSize buildAppBar(MediaQueryData q, double height) {
+    return PreferredSize(
+        preferredSize: Size(q.size.width, q.padding.top + height),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFF3867D5), Color(0xFF81C7F5)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: Stack(
+            children: <Widget>[
+              CustomPaint(
+                child: Container(
+                  width: q.padding.top + height,
+                  height: q.padding.top + height,
+                ),
+                painter: CurvePainter(
+                  color: Color(0x27f1f1f1),
+                  offset: Offset(30, 0),
+                ),
+              ),
+              CustomPaint(
+                child: Container(
+                  width: q.size.width,
+                  height: q.padding.top - 3,
+                ),
+                painter: CurvePainter(
+                  color: Color(0x27ffffff),
+                  offset: Offset(q.size.width - 30, 30),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(
+                    top: q.padding.top, left: 8.0, right: 8.0),
+                height: q.padding.top + height,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(top:8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Hello Brenda!',
+                            style: TextStyle(
+                              fontSize: 17.0,
+                              color: Color(0xFFF1F1F1),
+                            ),
+                          ),
+                          Text(
+                            'Today you have no tasks',
+                            style: TextStyle(
+                              fontSize: 10.0,
+                              color: Color(0xFFF1F1F1),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    IconButton(
+                      icon: Image.asset('assets/png/avatar.png'),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
   }
 }
 

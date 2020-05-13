@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'home.dart';
+
 class IntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,9 @@ class IntroPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: 16.0),
               child: RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+                },
                 padding: const EdgeInsets.all(0.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
